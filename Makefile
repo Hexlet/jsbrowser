@@ -25,3 +25,4 @@ deploy:
 	git push heroku
 
 .PHONY: test
+.PHONY: build
