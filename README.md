@@ -1,3 +1,5 @@
+[![GitHub Actions](https://github.com/Hexlet/jsbrowser/workflows/Node%20CI/badge.svg)](https://github.com/Hexlet/jsbrowser/actions/workflows/nodejs.yml)
+
 # jsbrowser
 
 jsbrowser - браузер, работающий на веб-странице, как обычный браузер. Поддерживает вкладки и асинхронную работу). Примеры для вдохновения - lynx, links, w3m
