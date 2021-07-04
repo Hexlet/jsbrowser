@@ -1,11 +1,14 @@
 import React from 'react';
-import Tabs from './components/Tabs.jsx';
+import Container from 'react-bootstrap/Container';
+import Header from './components/Header.jsx';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Tabs />
+      <Container fluid className="bg-light">
+        <Header />
+      </Container>
     </div>
   );
 }
