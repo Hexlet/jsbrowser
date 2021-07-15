@@ -1,17 +1,29 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Nav, Button } from 'react-bootstrap';
+import _ from 'lodash';
+import { addTab, switchTab } from '../slices/tabs';
 
 import TabItem from './TabItem.jsx';
 
 const Tabs = () => {
-  const tabs = useSelector((state) => Object.values(state.tabs.tabs));
-  // const dispatch = useDispatch();
-  console.log(tabs);
+  const tabsList = useSelector((state) => Object.values(state.tabs.tabsList));
+  const currentTabId = useSelector((state) => state.tabs.currentTabId);
+  const dispatch = useDispatch();
+  console.log(currentTabId);
+
+  const addNewTab = () => {
+    const newId = _.uniqueId();
+    dispatch(addTab({ id: newId, name: 'New Tab' }));
+    dispatch(switchTab(newId));
+  };
+
   return (
     <Nav variant="tabs">
-      <TabItem />
-      <Button variant="light">+</Button>
+      {tabsList.map(({ id, name }) => (
+        <TabItem key={id} id={id} name={name} />
+      ))}
+      <Button variant="light" onClick={addNewTab}>+</Button>
     </Nav>
   );
 };

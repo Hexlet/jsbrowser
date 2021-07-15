@@ -1,17 +1,39 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+import _ from 'lodash';
 
-const defaultCurrentTab = 1;
+const defaultCurrentTab = _.uniqueId();
+
+const initialState = {
+  tabsList: [
+    {
+      id: defaultCurrentTab,
+      name: 'New Tab',
+    },
+  ],
+  currentTabId: defaultCurrentTab,
+};
 
 const tabs = createSlice({
   name: 'tabs',
-  initialState: { tabs: [{ id: 1, name: 'New Tab' }], currentTabId: defaultCurrentTab },
+  initialState,
   reducers: {
     addTab: (state, action) => {
       const newTab = action.payload;
-      state.tabs.push(newTab);
+      // console.log(current(state));
+      // console.log(action);
+      // console.log(newTab);
+      state.tabsList.push(newTab);
+    },
+    switchTab: (state, action) => {
+      const newId = action.payload;
+      state.currentTabId = newId;
+      // console.log(current(state));
+      // console.log(action);
+      // console.log(newId);
     },
   },
 });
 
-export const { addTab } = tabs.actions;
+export const { addTab, switchTab } = tabs.actions;
 export default tabs.reducer;
