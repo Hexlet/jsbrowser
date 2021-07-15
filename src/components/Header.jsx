@@ -1,22 +1,15 @@
 import React from 'react';
 import {
-  Tab, Row, Col, Nav, Button,
+  Tab, Row, Col,
 } from 'react-bootstrap';
 import { ArrowLeft, ArrowRight, ArrowClockwise } from 'react-bootstrap-icons';
+import Tabs from './Tabs.jsx';
 import Search from './Search.jsx';
 
 const Header = () => (
   <Tab.Container id="left-tabs-example" defaultActiveKey="first">
 
-    <Nav variant="tabs">
-      <Nav.Item>
-        <Nav.Link className="text-dark" eventKey="first">Tab 1</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link className="text-dark" eventKey="second">Tab 2</Nav.Link>
-      </Nav.Item>
-      <Button variant="light">+</Button>
-    </Nav>
+    <Tabs />
 
     <Row>
       <Col sm={1} className="d-flex justify-content-between align-items-center">
