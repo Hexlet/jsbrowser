@@ -4,6 +4,6 @@ import App from './App.jsx';
 
 test('renders tab 1', () => {
   render(<App />);
-  const linkElement = screen.getByText(/Tab 1/i);
+  const linkElement = screen.getByText(/New Tab/i);
   expect(linkElement).toBeInTheDocument();
 });
