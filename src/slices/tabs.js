@@ -20,17 +20,11 @@ const tabs = createSlice({
   reducers: {
     addTab: (state, action) => {
       const newTab = action.payload;
-      // console.log(current(state));
-      // console.log(action);
-      // console.log(newTab);
       state.tabsList.push(newTab);
     },
     switchTab: (state, action) => {
       const newId = action.payload;
       state.currentTabId = newId;
-      // console.log(current(state));
-      // console.log(action);
-      // console.log(newId);
     },
   },
 });

@@ -8,9 +8,7 @@ import TabItem from './TabItem.jsx';
 
 const Tabs = () => {
   const tabsList = useSelector((state) => Object.values(state.tabs.tabsList));
-  const currentTabId = useSelector((state) => state.tabs.currentTabId);
   const dispatch = useDispatch();
-  console.log(currentTabId);
 
   const addNewTab = () => {
     const newId = _.uniqueId();

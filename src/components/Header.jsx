@@ -8,9 +8,7 @@ import Search from './Search.jsx';
 
 const Header = () => (
   <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-
     <Tabs />
-
     <Row>
       <Col sm={1} className="d-flex justify-content-between align-items-center">
         <ArrowLeft size={26} />
@@ -23,12 +21,7 @@ const Header = () => (
     </Row>
 
     <Tab.Content className="min-vh-100">
-      <Tab.Pane eventKey="first">
-        1
-      </Tab.Pane>
-      <Tab.Pane eventKey="second">
-        2
-      </Tab.Pane>
+      <Tab.Pane />
     </Tab.Content>
   </Tab.Container>
 );
