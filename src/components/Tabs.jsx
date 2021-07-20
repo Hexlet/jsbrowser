@@ -1,7 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Nav, Button } from 'react-bootstrap';
-import _ from 'lodash';
+import {
+  Nav, Button, OverlayTrigger, Tooltip,
+} from 'react-bootstrap';
+import uniqueId from 'lodash/uniqueId';
 import { addTab, switchTab } from '../slices/tabs';
 
 import TabItem from './TabItem.jsx';
@@ -11,7 +13,7 @@ const Tabs = () => {
   const dispatch = useDispatch();
 
   const addNewTab = () => {
-    const newId = _.uniqueId();
+    const newId = uniqueId();
     dispatch(addTab({ id: newId, name: 'New Tab' }));
     dispatch(switchTab(newId));
   };
@@ -21,7 +23,9 @@ const Tabs = () => {
       {tabsList.map(({ id, name }) => (
         <TabItem key={id} id={id} name={name} />
       ))}
-      <Button variant="light" onClick={addNewTab}>+</Button>
+      <OverlayTrigger key="right" placement="right" overlay={<Tooltip>New Tab</Tooltip>}>
+        <Button variant="light" onClick={addNewTab}>+</Button>
+      </OverlayTrigger>
     </Nav>
   );
 };

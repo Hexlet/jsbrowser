@@ -6,7 +6,7 @@ import { switchTab } from '../slices/tabs';
 const TabItem = ({ id, name }) => {
   const currentTabId = useSelector((state) => state.tabs.currentTabId);
   const dispatch = useDispatch();
-  const isActive = id === currentTabId ? true : null;
+  const isActive = id === currentTabId;
 
   const changeTab = () => {
     dispatch(switchTab(id));

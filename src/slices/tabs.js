@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import _ from 'lodash';
+import uniqueId from 'lodash/uniqueId';
 
-const defaultCurrentTab = _.uniqueId();
+const defaultCurrentTab = uniqueId();
 
 const initialState = {
   tabsList: [
