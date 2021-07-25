@@ -3,12 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   Nav, Button, OverlayTrigger, Tooltip,
 } from 'react-bootstrap';
-import { actions as tabActions } from '../slices/tabs';
 
+import * as selectors from '../selectors';
+import { actions as tabActions } from '../slices/tabs';
 import TabItem from './TabItem.jsx';
 
 const Tabs = () => {
-  const tabsList = useSelector((state) => state.tabs.tabsList);
+  const tabsList = useSelector(selectors.tabsListSelector);
   const dispatch = useDispatch();
 
   const handleAddNewTab = () => {
