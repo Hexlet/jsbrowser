@@ -1,20 +1,20 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Nav } from 'react-bootstrap';
-import { switchTab } from '../slices/tabs';
+import { actions as tabActions } from '../slices/tabs';
 
 const TabItem = ({ id, name }) => {
-  const currentTabId = useSelector((state) => state.tabs.currentTabId);
+  const activeTabId = useSelector((state) => state.tabs.activeTabId);
   const dispatch = useDispatch();
-  const isActive = id === currentTabId;
+  const isActive = id === activeTabId;
 
-  const changeTab = () => {
-    dispatch(switchTab(id));
+  const handleSwitchToTab = () => {
+    dispatch(tabActions.switchToTab({ id }));
   };
 
   return (
     <Nav.Item>
-      <Nav.Link onClick={changeTab} className="text-dark" active={isActive}>{name}</Nav.Link>
+      <Nav.Link onClick={handleSwitchToTab} className="text-dark" active={isActive}>{name}</Nav.Link>
     </Nav.Item>
   );
 };

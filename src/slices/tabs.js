@@ -2,32 +2,37 @@
 import { createSlice } from '@reduxjs/toolkit';
 import uniqueId from 'lodash/uniqueId';
 
-const defaultCurrentTab = uniqueId();
+const defaultActiveTabId = uniqueId();
+const defaultTabName = 'New Tab';
 
 const initialState = {
   tabsList: [
     {
-      id: defaultCurrentTab,
-      name: 'New Tab',
+      id: defaultActiveTabId,
+      name: defaultTabName,
     },
   ],
-  currentTabId: defaultCurrentTab,
+  activeTabId: defaultActiveTabId,
 };
 
 const tabs = createSlice({
   name: 'tabs',
   initialState,
   reducers: {
-    addTab: (state, action) => {
-      const newTab = action.payload;
-      state.tabsList.push(newTab);
+    addNewTab: (state) => {
+      const newId = uniqueId();
+
+      state.tabsList.push({ id: newId, name: defaultTabName });
+      state.activeTabId = newId;
     },
-    switchTab: (state, action) => {
-      const newId = action.payload;
-      state.currentTabId = newId;
+    switchToTab: (state, { payload }) => {
+      state.activeTabId = payload.id;
     },
   },
 });
 
-export const { addTab, switchTab } = tabs.actions;
-export default tabs.reducer;
+const { actions, reducer } = tabs;
+
+export { actions };
+
+export default reducer;
