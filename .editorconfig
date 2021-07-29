@@ -1,6 +1,6 @@
 [Makefile]
 indent_style = tab
 
-[*.js]
+[*.{js,jsx}]
 indent_style = space
 indent_size = 2
