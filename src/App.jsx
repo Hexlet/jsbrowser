@@ -4,8 +4,8 @@ import Header from './components/Header.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <Container fluid className="bg-light">
+    <div className="App overflow-hidden">
+      <Container fluid className="bg-light vh-100 d-flex flex-column">
         <Header />
       </Container>
     </div>

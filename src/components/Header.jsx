@@ -1,10 +1,10 @@
 import React from 'react';
-import {
-  Tab, Row, Col,
-} from 'react-bootstrap';
+import { Tab, Row, Col } from 'react-bootstrap';
 import { ArrowLeft, ArrowRight, ArrowClockwise } from 'react-bootstrap-icons';
 import Tabs from './Tabs.jsx';
 import Search from './Search.jsx';
+
+import TabsContent from './TabsContent.jsx';
 
 const Header = () => (
   <Tab.Container id="left-tabs-example" defaultActiveKey="first">
@@ -20,8 +20,8 @@ const Header = () => (
       </Col>
     </Row>
 
-    <Tab.Content className="min-vh-100">
-      <Tab.Pane />
+    <Tab.Content className="flex-fill">
+      <TabsContent />
     </Tab.Content>
   </Tab.Container>
 );
