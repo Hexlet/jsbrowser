@@ -28,6 +28,15 @@ const tabs = createSlice({
     switchToTab: (state, { payload }) => {
       state.activeTabId = payload.id;
     },
+    closeTab: (state, { payload }) => {
+      const tabsWithoutClosedTab = state.tabsList.filter((tab) => tab.id !== payload.id);
+      state.tabsList = tabsWithoutClosedTab;
+      if (state.activeTabId !== payload.id) {
+        return;
+      }
+      const tabAddedBeforeClosed = tabsWithoutClosedTab[tabsWithoutClosedTab.length - 1];
+      state.activeTabId = tabAddedBeforeClosed?.id || null;
+    },
   },
 });
 

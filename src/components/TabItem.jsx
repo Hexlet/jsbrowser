@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Nav } from 'react-bootstrap';
+import { Nav, Button } from 'react-bootstrap';
 
 import * as selectors from '../selectors';
 import { actions as tabActions } from '../slices/tabs';
@@ -14,9 +14,16 @@ const TabItem = ({ id, name }) => {
     dispatch(tabActions.switchToTab({ id }));
   };
 
+  const handleTabClosing = () => {
+    dispatch(tabActions.closeTab({ id }));
+  };
+
   return (
     <Nav.Item>
       <Nav.Link onClick={handleSwitchToTab} className="text-dark" active={isActive}>{name}</Nav.Link>
+      <Button onClick={handleTabClosing} className="tab-closing-button">
+        <span className="visually-hidden">Закрыть вкладку</span>
+      </Button>
     </Nav.Item>
   );
 };

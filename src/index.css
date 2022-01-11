@@ -11,3 +11,46 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  padding-right: 1.5rem;
+}
+
+.tab-closing-button {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 13px;
+  right: 5px;
+  padding: 0;
+  background-color: white;
+  border-color: black;
+  border-radius: 8px;
+}
+
+.tab-closing-button:before,
+.tab-closing-button:after {
+  position: absolute;
+  left: 6px;
+  top: 1px;
+  content: ' ';
+  height: 12px;
+  width: 2px;
+  background-color: #333;
+}
+
+.tab-closing-button:before {
+  transform: rotate(45deg);
+}
+.tab-closing-button:after {
+  transform: rotate(-45deg);
+}
+
+ .tab-closing-button:hover:before,
+ .tab-closing-button:hover:after {
+  background-color: white;
+}
