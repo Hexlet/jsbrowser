@@ -22,7 +22,7 @@ const TabItem = ({ id, name }) => {
     <Nav.Item>
       <Nav.Link onClick={handleSwitchToTab} className="text-dark" active={isActive}>{name}</Nav.Link>
       <Button onClick={handleTabClosing} className="tab-closing-button">
-        <span className="visually-hidden">Закрыть вкладку</span>
+        <span className="visually-hidden">Close tab</span>
       </Button>
     </Nav.Item>
   );
