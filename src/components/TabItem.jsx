@@ -23,7 +23,7 @@ const TabItem = ({ id, name }) => {
       <Nav.Link onClick={handleSwitchToTab} className="text-dark pe-4" active={isActive}>{name}</Nav.Link>
       <button
         type="button"
-        className="close position-absolute align-self-center close-tab-button"
+        className="close position-absolute align-self-center x-tab-close-button fw-normal"
         aria-label="Close"
         onClick={handleTabClosing}
       >
