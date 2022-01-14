@@ -14,9 +14,21 @@ const TabItem = ({ id, name }) => {
     dispatch(tabActions.switchToTab({ id }));
   };
 
+  const handleTabClosing = () => {
+    dispatch(tabActions.closeTab({ id }));
+  };
+
   return (
-    <Nav.Item>
-      <Nav.Link onClick={handleSwitchToTab} className="text-dark" active={isActive}>{name}</Nav.Link>
+    <Nav.Item className="d-flex position-relative">
+      <Nav.Link onClick={handleSwitchToTab} className="text-dark pe-4" active={isActive}>{name}</Nav.Link>
+      <button
+        type="button"
+        className="close position-absolute align-self-center x-tab-close-button fw-normal"
+        aria-label="Close tab"
+        onClick={handleTabClosing}
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
     </Nav.Item>
   );
 };
