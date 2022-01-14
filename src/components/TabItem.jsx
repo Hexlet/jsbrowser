@@ -24,11 +24,10 @@ const TabItem = ({ id, name }) => {
       <button
         type="button"
         className="close position-absolute align-self-center x-tab-close-button fw-normal"
-        aria-label="Close"
+        aria-label="Close tab"
         onClick={handleTabClosing}
       >
         <span aria-hidden="true">&times;</span>
-        <span className="visually-hidden">Close tab</span>
       </button>
     </Nav.Item>
   );
