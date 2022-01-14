@@ -28,6 +28,7 @@ const TabItem = ({ id, name }) => {
         onClick={handleTabClosing}
       >
         <span aria-hidden="true">&times;</span>
+        <span className="visually-hidden">Close tab</span>
       </button>
     </Nav.Item>
   );
