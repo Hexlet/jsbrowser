@@ -13,9 +13,5 @@ code {
 }
 
 .close-tab-button {
-  right: 0.5em;
-}
-
-.close-tab-button:hover {
-  color: gray;
+  right: 0.28em;
 }
