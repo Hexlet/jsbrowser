@@ -1,6 +1,11 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
+import { useTranslation } from 'react-i18next';
 
-const Search = () => <Form.Control type="text" placeholder="Enter a search query or enter a URL" />;
+const Search = () => {
+  const { t } = useTranslation();
+
+  return <Form.Control type="text" placeholder={t('search.placeholder')} />;
+};
 
 export default Search;
