@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Nav } from 'react-bootstrap';
+import { Nav, CloseButton } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import * as selectors from '../selectors';
@@ -23,14 +23,11 @@ const TabItem = ({ id, name }) => {
   return (
     <Nav.Item className="d-flex position-relative">
       <Nav.Link onClick={handleSwitchToTab} className="text-dark pe-4" active={isActive}>{name}</Nav.Link>
-      <button
-        type="button"
-        className="close position-absolute align-self-center x-tab-close-button fw-normal"
-        aria-label={t('tabs.closeButton')}
+      <CloseButton
+        className="position-absolute align-self-center x-tab-close-button fw-normal"
         onClick={handleTabClosing}
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
+        aria-label={t('tabs.closeButton')}
+      />
     </Nav.Item>
   );
 };
