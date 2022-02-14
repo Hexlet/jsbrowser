@@ -13,5 +13,7 @@ code {
 }
 
 .x-tab-close-button {
-  right: 0.28em;
+  right: 0.45em;
+  width: 0.2em;
+  height: 0.2em;
 }
