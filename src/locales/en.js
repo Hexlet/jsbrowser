@@ -9,6 +9,7 @@ export default {
     },
     search: {
       placeholder: 'Enter a search query or enter a URL',
+      label: 'Search field',
     },
   },
 };
