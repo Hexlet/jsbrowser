@@ -1,12 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals.js';
 import init from './init.jsx';
 
 const runBrowser = async () => {
   const vdom = await init();
-  ReactDOM.render(vdom, document.getElementById('root'));
+  ReactDOM.createRoot(document.getElementById('root')).render(vdom);
 };
 
 runBrowser();
