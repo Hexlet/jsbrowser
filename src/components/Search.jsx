@@ -24,7 +24,7 @@ const Search = () => {
         };
 
         dispatch(tabDataActions.addTabData(tabData));
-        formik.values.url = '';
+        formik.resetForm();
       } catch (err) {
         console.log('something wrong: ', err);
       }
