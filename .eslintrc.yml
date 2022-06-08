@@ -29,6 +29,7 @@ rules:
   functional/functional-parameters: 0
   functional/no-try-statement: 0
   functional/no-throw-statement: 0
+  react/function-component-definition: 0
 
 "parserOptions": {
   "ecmaVersion": 11

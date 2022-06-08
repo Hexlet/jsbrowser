@@ -4,7 +4,6 @@ import {
   Nav, Button, OverlayTrigger, Tooltip,
 } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-
 import * as selectors from '../selectors';
 import { actions as tabActions } from '../slices/tabs';
 import TabItem from './TabItem.jsx';
