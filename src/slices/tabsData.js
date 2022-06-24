@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   data: {},
+  history: {},
+  currentLinks: {},
 };
 
 const tabsData = createSlice({
@@ -10,6 +12,12 @@ const tabsData = createSlice({
   initialState,
   reducers: {
     addTabData: (state, { payload }) => {
+      const { url, tabData, tabId } = payload;
+      state.data = { ...state.data, ...tabData };
+      state.history[tabId] = tabId in state.history ? [...state.history[tabId], url] : [url];
+      state.currentLinks = { ...state.currentLinks, [tabId]: url };
+    },
+    updateTabData: (state, { payload }) => {
       state.data = { ...state.data, ...payload };
     },
   },
