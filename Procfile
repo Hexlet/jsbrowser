@@ -1,1 +1,1 @@
-web: make build
+web: bin/boot
