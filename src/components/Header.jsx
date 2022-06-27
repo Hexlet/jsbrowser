@@ -16,16 +16,17 @@ const Header = () => {
   const currentLinks = useSelector(selectors.currentLinksSelector);
   const dispatch = useDispatch();
 
-  const refresh = () => {
+  const refresh = async () => {
     if (activeTabId in currentLinks) {
       const url = currentLinks[activeTabId];
-      fetch(url)
-        .then((response) => response.text())
-        .then((htmlDoc) => {
-          const data = { [activeTabId]: htmlDoc };
-          dispatch(tabDataActions.updateTabData(data));
-        })
-        .catch((e) => console.log('something wrong: ', e));
+      try {
+        const response = await fetch(url);
+        const htmlDoc = await response.text();
+        const data = { [activeTabId]: htmlDoc };
+        dispatch(tabDataActions.updateTabData(data));
+      } catch (e) {
+        console.error('something wrong: ', e);
+      }
     }
   };
 
