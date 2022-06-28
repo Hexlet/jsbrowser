@@ -17,7 +17,8 @@ const Search = () => {
     },
     onSubmit: async (values) => {
       try {
-        const response = await fetch(values.url);
+        const url = new URL(values.url);
+        const response = await fetch(url.href);
         const htmlDoc = await response.text();
         const tabData = {
           tabData: { [activeTabId]: htmlDoc },
