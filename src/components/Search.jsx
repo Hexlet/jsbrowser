@@ -20,7 +20,9 @@ const Search = () => {
         const response = await fetch(values.url);
         const htmlDoc = await response.text();
         const tabData = {
-          [activeTabId]: htmlDoc,
+          tabData: { [activeTabId]: htmlDoc },
+          url: values.url,
+          tabId: activeTabId,
         };
 
         dispatch(tabDataActions.addTabData(tabData));
