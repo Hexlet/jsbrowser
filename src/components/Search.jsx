@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import { useFormik } from 'formik';
 import React from 'react';
 import { Form } from 'react-bootstrap';
@@ -5,6 +6,15 @@ import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import * as selectors from '../selectors';
 import { actions as tabDataActions } from '../slices/tabsData';
+import { actions as tabsActions } from '../slices/tabs';
+
+const generateValidUrl = (data) => {
+  const pattern = 'https?\:\/\/[a-zA-Z]+\..+'; // has protocol?
+  const hasProtocol = new RegExp(pattern);
+  const link = data.match(hasProtocol) ? data : `https://yandex.ru/search/?text=${encodeURIComponent(data)}`;
+  const url = new URL(`https://allorigins.hexlet.app/get?url=${encodeURIComponent(link)}`);
+  return { link, url };
+};
 
 const Search = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'search' });
@@ -17,16 +27,19 @@ const Search = () => {
     },
     onSubmit: async (values) => {
       try {
-        const url = new URL(values.url);
-        const response = await fetch(url.href);
-        const htmlDoc = await response.text();
+        const { link, url } = generateValidUrl(values.url);
+        const response = await fetch(url);
+        const htmlDoc = await response.json();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlDoc.contents, 'text/html');
         const tabData = {
-          tabData: { [activeTabId]: htmlDoc },
-          url: values.url,
+          tabData: { [activeTabId]: htmlDoc.contents },
+          url: link,
           tabId: activeTabId,
         };
 
         dispatch(tabDataActions.addTabData(tabData));
+        dispatch(tabsActions.renameTab({ id: activeTabId, name: doc.title }));
         formik.resetForm();
       } catch (err) {
         console.log('something wrong: ', err);
