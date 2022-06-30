@@ -7,3 +7,5 @@ export const tabsListSelector = (state) => state.tabs.tabsList;
 export const tabsDataSelector = (state) => state.tabsData.data;
 
 export const currentLinksSelector = (state) => state.tabsData.currentLinks;
+
+export const historyTabsSelector = (state) => state.tabsData.history;

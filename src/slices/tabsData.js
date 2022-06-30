@@ -1,5 +1,12 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
+export const updateTabData = createAsyncThunk('tabsData/updateTabData', async ({ activeTabId, url }) => {
+  const response = await fetch(url);
+  const htmlDoc = await response.text();
+  const data = { [activeTabId]: htmlDoc };
+  return { data, url: { [activeTabId]: url } };
+});
 
 const initialState = {
   data: {},
@@ -17,9 +24,13 @@ const tabsData = createSlice({
       state.history[tabId] = tabId in state.history ? [...state.history[tabId], url] : [url];
       state.currentLinks = { ...state.currentLinks, [tabId]: url };
     },
-    updateTabData: (state, { payload }) => {
-      state.data = { ...state.data, ...payload };
-    },
+  },
+  extraReducers(builder) {
+    builder.addCase(updateTabData.fulfilled, (state, { payload }) => {
+      const { data, url } = payload;
+      state.data = { ...state.data, ...data };
+      state.currentLinks = { ...state.currentLinks, ...url };
+    });
   },
 });
 
