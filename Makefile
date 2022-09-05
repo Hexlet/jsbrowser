@@ -24,4 +24,7 @@ publish:
 deploy:
 	git push heroku
 
+github-deploy:
+	npm run deploy
+
 .PHONY: build test
