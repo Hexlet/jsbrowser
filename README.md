@@ -1,6 +1,6 @@
 [![GitHub Actions](https://github.com/Hexlet/jsbrowser/workflows/Node%20CI/badge.svg)](https://github.com/Hexlet/jsbrowser/actions/workflows/nodejs.yml)
 
-https://jsbrowser.herokuapp.com/
+https://hexlet.github.io/jsbrowser/
 
 # jsbrowser
 
