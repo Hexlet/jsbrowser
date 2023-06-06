@@ -9,18 +9,20 @@ import IframeTemplate from './IframeTemplate.jsx';
 const TabsContent = () => {
   const activeTabId = useSelector(selectors.activeTabIdSelector);
   const tabList = useSelector(selectors.tabsListSelector);
-  const tabsData = useSelector(selectors.tabsDataSelector);
+  const tabLinks = useSelector(selectors.currentLinksSelector);
 
   return (
     <>
       {tabList.map((tabListData) => {
         const isActive = tabListData.id === activeTabId;
         const currentTabId = tabListData.id;
-        const tabData = tabsData[currentTabId];
+        const tabLink = tabLinks[currentTabId];
 
         return (
           <TabPane active={isActive} key={tabListData.id} className="h-100">
-            <IframeTemplate tabData={tabData} />
+            <IframeTemplate
+              link={tabLink}
+            />
           </TabPane>
         );
       })}

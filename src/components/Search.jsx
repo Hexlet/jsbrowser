@@ -11,7 +11,7 @@ import { actions as tabsActions } from '../slices/tabs';
 const generateValidUrl = (data) => {
   const pattern = 'https?\:\/\/[a-zA-Z]+\..+'; // has protocol?
   const hasProtocol = new RegExp(pattern);
-  const link = data.match(hasProtocol) ? data : `https://yandex.ru/search/?text=${encodeURIComponent(data)}`;
+  const link = data.match(hasProtocol) ? data : `https://bing.com/search/?q=${encodeURIComponent(data)}`;
   const url = new URL(`https://allorigins.hexlet.app/get?url=${encodeURIComponent(link)}`);
   return { link, url };
 };
